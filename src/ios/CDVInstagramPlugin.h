@@ -33,6 +33,7 @@
 @property (nonatomic) UIDocumentInteractionController *interactionController;
 
 - (void)isInstalled:(CDVInvokedUrlCommand*)command;
+- (void)openCamera:(CDVInvokedUrlCommand*)command;
 - (void)share:(CDVInvokedUrlCommand*)command;
 - (void)shareAsset:(CDVInvokedUrlCommand*)command;
 

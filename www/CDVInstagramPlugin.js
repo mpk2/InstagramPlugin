@@ -60,6 +60,28 @@ var Plugin = {
       callback && callback(null, false);
     }, "Instagram", "isInstalled", []);
   },
+  openCamera: function(caption, callback) {
+      // sanity check
+      if (hasCheckedInstall && !isAppInstalled) {
+          console.log("oops, Instagram is not installed ... ");
+          return callback && callback("oops, Instagram is not installed ... ");
+      }
+
+      if (cordova && cordova.plugins && cordova.plugins.clipboard && caption !== '') {
+          console.log("copying caption: ", caption);
+          cordova.plugins.clipboard.copy(caption);
+      }
+
+      exec(
+          function () {
+              callback && callback(null, true);
+          },
+          function (err) {
+              callback && callback(err);
+          }, "Instagram", "openCamera", []
+      );
+
+  },
   share: function () {
     var data,
         caption,
